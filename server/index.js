@@ -2,11 +2,12 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
-import { dotenv } from "dotenv";
+import dotenv from "dotenv";
+
 import multer from "multer";
-import { helmet } from "helmet";
+import helmet from "helmet";
 import morgan from "morgan";
-import { path } from "path";
+import  path  from "path";
 import { fileURLToPath } from "url";
 import {register} from "./controllers/auth.js"
 
@@ -44,7 +45,7 @@ app.post("/auth/register", upload.single("picture"), register);
 
 
 // MONGOOSE SETUP
-const PORT= process.env.PORT ||  6001;
+const PORT= process.env.PORT ||  6001; //BACK UP PORT 6001
 mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser:  true,
     useUnifiedTopology: true,

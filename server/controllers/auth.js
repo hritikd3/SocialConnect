@@ -1,41 +1,42 @@
-import brycpt from "brycpt"
-import jwr from "jsonwebtoken"
-import User from "../models/User.js"
+import bcrypt from "bcryptjs";
 
-/*Register user */
-export const register= async(req, res)=()=>{
-    try{
-        const {
-            firstName,
-            lastName,
-            email,
-            password,
-            picturePath,
-            friends,
-            location,
-            occupation
-        }= req.body;
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
 
-        const salt= await bcrypt.genSalt()
-        const passwordHash= await bcrypt.hash(password, salt);
+/* Register user */
+export const register = async (req, res) => {
+  try {
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      picturePath,
+      friends,
+      location,
+      occupation,
+    } = req.body;
 
-        const newUser= new User({
-            firstName,
-            lastName,
-            email,
-            password: passwordHash,
-            picturePath,
-            friends,
-            location,
-            occupation,
-            viewedProfile: Math.floor(Math.random()*10000),
-            impressions: Math.floor(Math.random()*10000)
-        })
+    // Create an asynchronous function
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
 
-        const savedUser= await newUser.save();
-        res.status(201).json(savedUser)
-    } catch(err){
-        res.status(500).json({error: err.message})
-    }
+    const newUser = new User({
+      firstName,
+      lastName,
+      email,
+      password: passwordHash,
+      picturePath,
+      friends,
+      location,
+      occupation,
+      viewedProfile: Math.floor(Math.random() * 10000),
+      impressions: Math.floor(Math.random() * 10000),
+    });
 
-}
+    const savedUser = await newUser.save();
+    res.status(201).json(savedUser);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
