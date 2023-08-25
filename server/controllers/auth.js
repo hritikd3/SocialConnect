@@ -18,7 +18,7 @@ export const register = async (req, res) => {
     } = req.body;
 
     // Create an asynchronous function
-    const salt = await bcrypt.genSalt();
+    const salt = await bcrypt.genSalt();  //we used this to encrypt our pass
     const passwordHash = await bcrypt.hash(password, salt);
 
     const newUser = new User({
