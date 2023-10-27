@@ -1,10 +1,13 @@
-import react from 'react';
+import { Box } from "@mui/material";
 
+import Navbar from "../navbar";
 
 
 const HomePage=()=>{
     return (
-        <div>working mode on </div>
+        <Box>
+            <Navbar />
+        </Box>
     )
 }
 
