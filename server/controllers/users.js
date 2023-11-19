@@ -1,6 +1,22 @@
 import { format } from "morgan";
 import User from "../models/User.js";
 
+// Format friend data
+const formatFriend = ({
+  _id,
+  firstName,
+  lastName,
+  occupation,
+  location,
+  picturePath,
+}) => ({
+  _id,
+  firstName,
+  lastName,
+  occupation,
+  location,
+  picturePath,
+});
 // READ
 export const getUser = async (req, res) => {
   try {
@@ -22,18 +38,7 @@ export const getUserFriends = async (req, res) => {
       user.friends.map((id) => User.findById(id))
     );
 
-    const formattedFriends = friends.map(
-      ({ _id, firstName, lastName, occupation, location, picturePath }) => {
-        return {
-          _id,
-          firstName,
-          lastName,
-          occupation,
-          location,
-          picturePath,
-        };
-      }
-    );
+    const formattedFriends = friends.map(formatFriend);
     res.status(200).json(formattedFriends);
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -62,20 +67,9 @@ export const addRemoveFriend = async (req, res) => {
       user.friends.map((uId) => User.findById(uId))
     );
 
-    const formattedFriends = friends.map(
-      ({ _id, firstName, lastName, occupation, location, picturePath }) => {
-        return {
-          _id,
-          firstName,
-          lastName,
-          occupation,
-          location,
-          picturePath,
-        };
-      }
-    );
+    const formattedFriends = friends.map(formatFriend);
     res.status(200).json(formattedFriends);
   } catch (err) {
     res.status(404).json({ message: err.message });
-  };
+  }
 };

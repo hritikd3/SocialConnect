@@ -12,6 +12,9 @@ export const verifyToken = async (req, res, next) => {
     req.user = verified;
     next();
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    if (err.name === "TokenExpiredError") {
+      return res.status(401).json({ error: "Token has expired" });
+    }
+    return res.status(401).json({ error: "Invalid token" });
   }
 };
