@@ -1,3 +1,7 @@
+// Friend component is responsible for
+//  displaying information about a friend, allowing the 
+//  user to navigate to the friend's profile and manage the friendship status through an "Add Friend" or "Remove Friend" button
+
 import { PersonAddOutlined, PersonRemoveOutlined } from "@mui/icons-material";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { setFriends } from "../state";
