@@ -28,11 +28,16 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
 
-  // Check if the friend is already in the user's friends list
-  const isFriend = friends.find((friend) => friend._id === friendId);
+//   // Check if the friend is already in the user's friends list
+const isFriend = Array.isArray(friends) && friends.find((friend) => friend._id === friendId);
+
+  // // Check if the friend is already in the user's friends list
+  // const isFriend = friends.find((friend) => friend._id === friendId);
 
   // Function to update the friendship status with a server patch request
   const patchFriend = async () => {
+    console.log("this is id" ,_id)
+    console.log("this is friendsid" ,friendId)
     const response = await fetch(
       `http://localhost:3001/users/${_id}/${friendId}`,
       {

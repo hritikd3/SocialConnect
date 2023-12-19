@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPosts } from "state";
+import { setPosts } from "../../state";
 import PostWidget from "../widgets/PostWidget";
 
 // Define a functional component called PostsWidget
