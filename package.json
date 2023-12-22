@@ -4,6 +4,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.18",
-    "@mui/system": "^5.14.18"
+    "@mui/system": "^5.14.18",
+    "moment-timezone": "^0.5.43"
   }
 }
