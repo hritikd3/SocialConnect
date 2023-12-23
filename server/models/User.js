@@ -23,8 +23,7 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      max: 5,
-      unique: true,
+      min: 5,
     },
     picturePath: {
       type: String,
@@ -37,7 +36,7 @@ const UserSchema = new mongoose.Schema(
     location: String,
     occupation: String,
     viewedProfile: Number,
-    impression: Number,
+    impressions: Number,
   },
   { timestamps: true }
 );
