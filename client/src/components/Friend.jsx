@@ -36,8 +36,8 @@ const isFriend = Array.isArray(friends) && friends.find((friend) => friend._id =
 
   // Function to update the friendship status with a server patch request
   const patchFriend = async () => {
-    console.log("this is id" ,_id)
-    console.log("this is friendsid" ,friendId)
+    // console.log("this is id" ,_id)
+    // console.log("this is friendsid" ,friendId)
     const response = await fetch(
       `http://localhost:3001/users/${_id}/${friendId}`,
       {
@@ -49,9 +49,17 @@ const isFriend = Array.isArray(friends) && friends.find((friend) => friend._id =
       }
     );
     const data = await response.json();
+    console.log(response)
+    console.log(data)
+    if(response.status=== 200){
+
     
-    // Dispatch an action to update the friends list in the Redux store
-    dispatch(setFriends({ friends: data }));
+      // Dispatch an action to update the friends list in the Redux store
+      dispatch(setFriends({ friends: data.userFriends }));
+
+    }
+
+     
   };
 
   // Render the UI for the Friend component

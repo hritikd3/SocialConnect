@@ -6,12 +6,12 @@ import Friend from "../../components/Friend";
 import WidgetWrapper from "../../components/WidgetWrapper";
 
 const FriendListWidget = ({ userId }) => {
-  
+
   const dispatch = useDispatch();
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
- 
+
   const getFriends = async () => {
     const response = await fetch(
       `http://localhost:3001/users/${userId}/friends`,
@@ -21,15 +21,23 @@ const FriendListWidget = ({ userId }) => {
       }
     );
     const data = await response.json();
-    dispatch(setFriends({ friends: data }));
+    if( response.status === 200 ){
+
+      dispatch(setFriends({ friends: data }));
+    }
     
   };
-    console.log(friends)
+
   useEffect(() => {
     getFriends();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  if(!friends){
+  return <> </>
+  }
+
   return (
+
     <WidgetWrapper>
       <Typography
         color={palette.neutral.dark}
@@ -40,7 +48,7 @@ const FriendListWidget = ({ userId }) => {
         Friend List
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
-    
+
         {friends?.map((friend) => (
           <Friend
             key={friend._id}
