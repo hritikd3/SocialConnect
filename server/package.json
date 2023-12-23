@@ -9,6 +9,7 @@
     "gridfs-stream": "^1.1.1",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.1",
+    "moment-timezone": "^0.5.43",
     "mongoose": "^7.4.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
