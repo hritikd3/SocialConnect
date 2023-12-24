@@ -5,13 +5,17 @@ import ProfilePage from "./pages/profilePage";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+// import { createTheme } from "@mui/material/styles";
+import createAppTheme from "../../client/src/utils/createAppTheme";  // Update the path
+
 import { themeSettings } from "./theme";
 import HomePage from "./pages/homePage";
 
+
+
 function App() {
   const mode = useSelector((state) => state.mode);
-  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const theme = useMemo(() => createAppTheme(themeSettings(mode)), [mode]);
   const isAuth = Boolean(useSelector((state) => state.token));
 
   return (
