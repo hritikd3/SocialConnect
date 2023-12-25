@@ -9,7 +9,7 @@
 
 ### Screenshots
 
-![Screenshot 1](https://example.com/screenshot1.png)
+![post feed](https://github.com/hritikd3/SocialConnect/blob/main/snapshots/Post%20feed.png)
 *Caption for Screenshot 1*
 
 ![Screenshot 2](https://example.com/screenshot2.png)
